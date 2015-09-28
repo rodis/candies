@@ -60,8 +60,6 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-SOCIAL_AUTH_LOGIN_URL = 'django.contrib.auth.views.login'
-
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
