@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+
+</br>
+</br>
+
+<div class="container">
+
+  <div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="http://www.3g.co.uk/g_phones/large/google-maps-returns-to-apple-devices-1.jpg">
+    </div>
+    <div class="card-content">
+      <span class="activator grey-text text-darken-4">Ti voglio bene. Sono 12 lettere e la loro pronuncia non dura ke un attimo ma se dette con il cuore e ascoltate con la mente durano x sempre...!!<i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+
+  <ul class="collection">
+    {% for sweet in object_list %}
+    <li class="collection-item avatar">
+      <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+      <p>{{ sweet.sweet }}</p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

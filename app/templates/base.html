@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+      function initGeolocation() {
+        if (navigator && navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            successCallback,
+            errorCallback,
+            { enableHighAccuracy: true }
+          );
+        } else {
+          console.log('Geolocation is not supported');
+        }
+      }
+
+      function errorCallback() {
+        var box = document.getElementById("sweet_button");
+        box.style.color="btn waves-effect waves-light right";
+      }
+
+      function successCallback(position) {
+        var lat = document.getElementById("id_latitude");
+        var lon = document.getElementById("id_longitude");
+        lat.value = position.coords.latitude;
+        lon.value = position.coords.longitude;
+        var box = document.getElementById("sweet_button");
+        box.setAttribute("class", "btn waves-effect waves-light right red lighten-1");
+      }
+    </script>
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
+  </head>
+  <body onload="javascript:initGeolocation()">
+    <header>
+      <nav class="top-nal">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Sweet&middot;It</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          © 2015 Copyright Text
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+
+  </body>
+</html>
