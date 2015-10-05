@@ -35,3 +35,7 @@ class SweetDetail(DetailView):
         context['sweets'] = Sweet.objects.filter(
             point__distance_lte=(self.object.point, D(m=50))).exclude(id=self.object.id)
         return context
+
+
+# class SweetListView(ListView):
+#     model = Sweet

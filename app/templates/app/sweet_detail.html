@@ -23,15 +23,7 @@
   </div>
 
   {% if sweets %}
-  <ul class="collection">
-    {% for sweet in sweets %}
-    <li class="collection-item avatar">
-      <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-      <p>{{ sweet.sweet }}</p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% include "app/_sweet_list.html" with sweets=sweets %}
   {% endif %}
 
 </div>
