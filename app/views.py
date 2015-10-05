@@ -1,31 +1,37 @@
 from django.contrib.gis.geos import fromstr
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.template import RequestContext
-from django.views.generic import ListView
+from django.views.generic import DetailView
 from django.core.urlresolvers import reverse
+from django.views.generic.edit import FormView
+from django.contrib.gis.measure import D
 
 from app.forms import SweetForm
 from app.models import Sweet
 
 
-def manage_sweet(request):
-    if request.method == "POST":
-        formset = SweetForm(request.POST, request.FILES)
-        # import ipdb; ipdb.set_trace()
-        if formset.is_valid():
-            obj = Sweet(
-                sweet=formset.cleaned_data['sweet'],
-                point = fromstr("POINT(%s %s)" % (
-                    formset.cleaned_data['longitude'],
-                    formset.cleaned_data['latitude']))
-            )
-            obj.save()
-            return HttpResponseRedirect(reverse('sweets'))
-    else:
-        formset = SweetForm()
-    return render(request, "home.html", {'formset': formset})
+class SweetFormView(FormView):
+    template_name = 'home.html'
+    form_class = SweetForm
+
+    def form_valid(self, form):
+        obj = Sweet(
+            sweet=form.cleaned_data['sweet'],
+            point = fromstr("POINT(%s %s)" % (
+                form.cleaned_data['longitude'],
+                form.cleaned_data['latitude']))
+        )
+        obj.save()
+        self.obj = obj
+        return super(SweetFormView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('sweet', kwargs={'pk':self.obj.pk})
 
 
-class SweetLists(ListView):
+class SweetDetail(DetailView):
     model = Sweet
+
+    def get_context_data(self, **kwargs):
+        context = super(SweetDetail, self).get_context_data(**kwargs)
+        context['sweets'] = Sweet.objects.filter(
+            point__distance_lte=(self.object.point, D(m=50))).exclude(id=self.object.id)
+        return context
