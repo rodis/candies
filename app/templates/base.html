@@ -31,7 +31,7 @@
         lat.value = position.coords.latitude;
         lon.value = position.coords.longitude;
         var box = document.getElementById("sweet_button");
-        box.setAttribute("class", "btn waves-effect waves-light right red lighten-1");
+        box.setAttribute("class", "btn waves-effect waves-light right red darken-2");
       }
     </script>
     <style>
@@ -44,11 +44,28 @@
       main {
         flex: 1 0 auto;
       }
+
+      .tabs li.tab {
+        padding-top: 7px;
+      }
+
+      .input-field .prefix.active {
+        color: #d32f2f;
+      }
+
+      textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid #d32f2f;
+        box-shadow: 0 1px 0 0 #d32f2f;
+      }
+
+      .tabs .indicator {
+      background-color: #d32f2f;
+      }
     </style>
   </head>
   <body onload="javascript:initGeolocation()">
     <header>
-      <nav class="top-nal">
+      <nav class="top-nal red darken-2">
         <div class="container">
           <div class="nav-wrapper">
             <a href="{% url 'home' %}" class="brand-logo center">Sweet&middot;It</a>
@@ -60,7 +77,7 @@
       {% block content %}
       {% endblock %}
     </main>
-    <footer class="page-footer">
+    <footer class="page-footer red darken-2">
       <div class="footer-copyright">
         <div class="container">
           © 2015 Copyright Text
