@@ -1,0 +1,14 @@
+<div class="container">
+  <img class="responsive-img" src="http://www.collectorsprints.co.uk/images/stock/doug_hyde/love_is_all_around.jpg"/>
+  <form action="{% url 'around_you_form' %}" method="post">
+    <div class="row">
+      {% csrf_token %}
+      {{ form }}
+    </div>
+    <button id="around_you_button"
+            class="btn waves-effect waves-light right disabled"
+            type="submit" name="action">Sweet around you
+      <i class="material-icons right">tag_faces</i>
+    </button>
+  </form>
+</div>

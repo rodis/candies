@@ -30,52 +30,18 @@
 </br>
 </br>
 
-<div id="add" class="">
-  <div class="container">
-    <form action="{% url 'add_form' %}" method="post">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">mode_edit</i>
-          {% csrf_token %}
-          {{ add_form }}
-        </div>
-      </div>
-      <button id="sweet_button_add"
-              class="btn waves-effect waves-light right disabled"
-              type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
-
-    </form>
+<div id="add">
+  {% include "app/add_form.html" with form=add_form %}
   </div>
 </div>
 
 <div id="around_you">
-  <div class="container">
-    <img class="responsive-img" src="http://www.collectorsprints.co.uk/images/stock/doug_hyde/love_is_all_around.jpg"/>
-    <form action="{% url 'around_you_form' %}" method="post">
-      <div class="row">
-        {% csrf_token %}
-        {{ around_you_form }}
-      </div>
-      <button id="around_you_button"
-              class="btn waves-effect waves-light right disabled"
-              type="submit" name="action">Sweet around you
-        <i class="material-icons right">tag_faces</i>
-      </button>
-    </form>
-  </div>
+  {% include "app/sweet_around_you_form.html" with form=around_you_form %}
 </div>
 
 <div id="best_of_love">
-  <div class="container">
-    <img class="responsive-img" src="https://www.libertygalleries.com/contents/media/dh07018_doug_hyde_the%20gift%20of%20love.jpg"/>
-    <a id="sweet_button_all"
-       class="btn waves-effect waves-light right disabled"
-       href="{% url 'sweet_list' %}">Best of love
-      <i class="material-icons right">tag_faces</i>
-    </a>
-  </div>
-<div id="user">Test 4</div>
+  {% include "app/best_of_love_form.html" %}
+</div>
+<div id="user"></div>
 
 {% endblock %}
