@@ -4,7 +4,11 @@ from django import forms
 from app.models import Sweet
 
 
-class SweetForm(forms.Form):
+class GeoSweetForm(forms.Form):
+    latitude = forms.FloatField(widget=forms.HiddenInput())
+    longitude = forms.FloatField(widget=forms.HiddenInput())
+
+class SweetForm(GeoSweetForm):
     sweet = forms.CharField(
         max_length=140,
         label='',
@@ -14,5 +18,3 @@ class SweetForm(forms.Form):
                 'length': 140,
                 'placeholder': "Your sweet here :)",
             }))
-    latitude = forms.FloatField(widget=forms.HiddenInput())
-    longitude = forms.FloatField(widget=forms.HiddenInput())

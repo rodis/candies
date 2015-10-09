@@ -26,12 +26,17 @@
       }
 
       function successCallback(position) {
-        var lat = document.getElementById("id_latitude");
-        var lon = document.getElementById("id_longitude");
-        lat.value = position.coords.latitude;
-        lon.value = position.coords.longitude;
-        var box = document.getElementById("sweet_button");
-        box.setAttribute("class", "btn waves-effect waves-light right red darken-2");
+        var add_lat = document.querySelectorAll("#add #id_latitude")[0];
+        var add_lon = document.querySelectorAll("#add #id_longitude")[0];
+        var around_you_lat = document.querySelectorAll("#around_you #id_latitude")[0];
+        var around_you_lon = document.querySelectorAll("#around_you #id_longitude")[0];
+        add_lat.value = position.coords.latitude;
+        add_lon.value = position.coords.longitude;
+        around_you_lat.value = position.coords.latitude;
+        around_you_lon.value = position.coords.longitude;
+        document.getElementById("sweet_button_add").setAttribute("class", "btn waves-effect waves-light right red darken-2");
+        document.getElementById("around_you_button").setAttribute("class", "btn waves-effect waves-light right red darken-2");
+        document.getElementById("sweet_button_all").setAttribute("class", "btn waves-effect waves-light right red darken-2");
       }
     </script>
     <style>
@@ -59,7 +64,7 @@
       }
 
       .tabs .indicator {
-      background-color: #d32f2f;
+        background-color: #d32f2f;
       }
     </style>
   </head>
