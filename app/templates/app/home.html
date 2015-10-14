@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "app/base.html" %}
 {% block title %}{% endblock title %}
-{% block content %}
 
+{% block content %}
 <div class="col s12">
   <ul class="tabs z-depth-1">
     <li class="tab col s3">
@@ -42,6 +42,10 @@
 <div id="best_of_love">
   {% include "app/best_of_love_form.html" %}
 </div>
-<div id="user"></div>
 
+<div id="user"></div>
+{% endblock %}
+
+{% block js %}
+    <script src="{{STATIC_URL}}/js/sweet.js"></script>
 {% endblock %}

@@ -12,7 +12,7 @@ from app.models import Sweet
 
 class HomeView(TemplateView):
 
-    template_name = 'home.html'
+    template_name = 'app/home.html'
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class HomeView(TemplateView):
         return context
 
 class AddFormView(FormView):
-    template_name = 'home.html'
+    template_name = 'app/home.html'
     form_class = SweetForm
 
     def form_valid(self, form):
@@ -40,7 +40,7 @@ class AddFormView(FormView):
 
 
 class AroundYouFormView(FormView):
-    template_name = 'fake_template.html'
+    template_name = 'app/fake_template.html'
     form_class = GeoSweetForm
 
     def form_valid(self, form):

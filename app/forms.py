@@ -14,7 +14,7 @@ class SweetForm(GeoSweetForm):
         label='',
         widget=forms.Textarea(
             attrs={
-                'class': "materialize-textarea validate",
+                'class': "materialize-textarea",
                 'length': 140,
                 'placeholder': "Your sweet here :)",
             }))

@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.tabs li.tab {
+    padding-top: 7px;
+}
+
+/* .input-field .prefix.active { */
+/*     color: #d32f2f; */
+/* } */
+
+/* textarea.materialize-textarea:focus:not([readonly]) { */
+/*     border-bottom: 1px solid #d32f2f; */
+/*     box-shadow: 0 1px 0 0 #d32f2f; */
+/* } */
+
+.tabs .indicator {
+    background-color: #d32f2f;
+}
