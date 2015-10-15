@@ -24,3 +24,9 @@ main {
 .tabs .indicator {
     background-color: #d32f2f;
 }
+
+#map {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
